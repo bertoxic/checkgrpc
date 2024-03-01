@@ -1,0 +1,33 @@
+syntax = "proto3";
+package chat;
+option go_package = "/chat";
+
+message Request {
+    string request = 1;
+    string who = 2;
+}
+
+message Response {
+    string response = 1;
+    string who = 2;
+}
+
+service ChatService {
+    rpc SayHello(Request) returns (Response) {}
+    rpc subhello(Request) returns (stream Response);
+}
+
+
+
+//protoc -I=. --go_out=. --go-grpc_out=. chat/*.proto
+
+
+//export PATH=$PATH:$(go env GOPATH)\bin
+
+// export GOROOT=/usr/local/go
+// export GOPATH=$HOME/go
+// export GOBIN=$GOPATH/bin
+// export PATH=$PATH:$GOROOT:$GOPATH:$GOBIN
+
+//export GOROOT=C:/Users/HP/go/bin/
+
